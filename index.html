@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat with ChatGPT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/static/socket.io-client-4.5.4/dist/socket.io.js"></script>
+    <style>
+      .user-text{
+        font-family:Arial;
+        color:bule;
+      }
+
+      .ai-response{
+        font-family:Helvetica;
+        color:green;
+      }
+      p.cursor:after {
+        content: '|';
+        display: inline-block;
+        margin-left: 3px;
+        width: 6px;
+        height: 16px;
+        animation: blink 0.8s infinite;
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid h-100 bg-info text-white py-5 rounded scroll" >
+      <h1 class="text-center mb-5">1</h1>
+      <div class="row justify-content-center rounded scroll" >
+        <div class="col-8 bg-white p-5 rounded" style="height: 75vh; margin: 0 auto;">
+            <div id="chat-container">
+              <div class="input-group bg-black my-3 scroll" id="chat-log"></div>
+            </div>
+            <div class="position-absolute"  style="margin: 0 auto; bottom: 0; width: 95%;">
+
+            <div class="input-group my-3" >
+              <form id="chat-form">
+                <input type="text" id="user-text" class="form-control" style="word-wrap: break-word; overflow-wrap: break-word; word-break: break-all;  height: 50px;" placeholder="Type your message here" onkeydown="if(event.keyCode==13) {sendMessage();}" />
+                <div class="input-group-append">
+                  <button id="send-button" class="btn btn-info" onclick="sendMessage()">Send</button>
+                </div>
+              </form>
+            </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const socket = io('http://10.90.167.99:5000');
+      var chatForm = document.getElementById('chat-form');
+      var chatInput = document.getElementById('user-text');
+      chatForm.onsubmit = function(event) {
+          event.preventDefault();
+          var userText = chatInput.value;
+          chatInput.value = "";
+          $('#chat-container').append('<div class="row my-3"><div class="col-12"><div div class="bg-info text-black rounded py-2 px-3" style="word-wrap: break-word; overflow-wrap: break-word;"><p class="m-0">' + userText + '</p></div></div></div>');
+          socket.emit('chat', userText);
+          $('#chat-container').append('<div class="row my-3"><div class="col-12"><div class="bg-secondary text-white rounded py-2 px-3 d-flex flex-row align-items-center" style="word-wrap: break-word; overflow-wrap: break-word;"><p class="cursor flex-grow-1 m-0"></p></div></div></div>');
+      };
+      socket.on('response', function(response) {
+          var $lastP = $('#chat-container p:last');
+          $lastP.append(response.replace(/\n/g, '<br>').replace('\t', '&#9;'));
+
+      });
+      socket.on('close_cur', function(response) {
+          console.log("你好");
+          const div = document.querySelector('#chat-container');
+          const lastP = div.querySelector('p:last-child');
+          lastP.classList.remove('cursor');
+      });
+    </script>
+  </body>
+</html>
