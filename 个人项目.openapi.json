@@ -1,0 +1,77 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "个人项目",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "华东南一级DM测试"
+    },
+    {
+      "name": "华东南一级DM测试/华东南宁波附加服务器测试"
+    },
+    {
+      "name": "华东南一级DM测试/华东南宁波301重定向测试"
+    },
+    {
+      "name": "华东南一级DM测试/华东南宁波301重定向测试/ZTE"
+    },
+    {
+      "name": "华东南一级DM测试/华东南宁波301重定向测试/华为端 "
+    },
+    {
+      "name": "华东南一级DM测试/华东南宁波301重定向测试/华为端  wifi"
+    },
+    {
+      "name": "华东南一级DM测试/华东南宁波301重定向测试/小源"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "获取二级cookie",
+        "x-apifox-folder": "华东南一级DM测试",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "华东南一级DM测试"
+        ],
+        "parameters": [
+          {
+            "name": "x-up-Calling-line-id",
+            "in": "header",
+            "description": "",
+            "required": false,
+            "example": "+8612345678212",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {},
+                  "x-apifox-ignore-properties": [],
+                  "x-apifox-orders": []
+                }
+              }
+            }
+          }
+        },
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/2474673/apis/api-70325141-run"
+      }
+    }
+  },
+  "components": {
+    "schemas": {}
+  },
+  "servers": []
+}
