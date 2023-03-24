@@ -7,9 +7,6 @@
   },
   "tags": [
     {
-      "name": "示例项目"
-    },
-    {
       "name": "华东南一级DM测试"
     },
     {
@@ -32,476 +29,73 @@
     }
   ],
   "paths": {
-    "/pet/{petId}": {
-      "delete": {
-        "summary": "删除宠物信息",
-        "x-apifox-folder": "示例项目",
-        "x-apifox-status": "released",
-        "deprecated": false,
-        "description": "",
-        "tags": [
-          "示例项目"
-        ],
-        "parameters": [
-          {
-            "name": "petId",
-            "in": "path",
-            "description": "Pet id to delete",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "api_key",
-            "in": "header",
-            "description": "",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "type": "integer",
-                      "minimum": 0,
-                      "maximum": 0
-                    }
-                  },
-                  "required": [
-                    "code"
-                  ],
-                  "x-apifox-orders": [
-                    "code"
-                  ],
-                  "x-apifox-ignore-properties": []
-                },
-                "examples": {
-                  "1": {
-                    "summary": "成功示例",
-                    "value": {
-                      "code": 0
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-run-in-apifox": "https://www.apifox.cn/web/project/2474673/apis/api-70017091-run"
-      },
-      "get": {
-        "summary": "查询宠物详情",
-        "x-apifox-folder": "示例项目",
-        "x-apifox-status": "released",
-        "deprecated": false,
-        "description": "",
-        "tags": [
-          "示例项目"
-        ],
-        "parameters": [
-          {
-            "name": "petId",
-            "in": "path",
-            "description": "宠物 ID",
-            "required": true,
-            "example": "1",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "type": "integer",
-                      "minimum": 0,
-                      "maximum": 0,
-                      "description": "状态码"
-                    },
-                    "data": {
-                      "$ref": "#/components/schemas/Pet"
-                    }
-                  },
-                  "required": [
-                    "code",
-                    "data"
-                  ],
-                  "x-apifox-orders": [
-                    "code",
-                    "data"
-                  ],
-                  "x-apifox-ignore-properties": []
-                },
-                "examples": {
-                  "1": {
-                    "summary": "成功示例",
-                    "value": {
-                      "code": 0,
-                      "data": {
-                        "name": "Hello Kity",
-                        "photoUrls": [
-                          "http://dummyimage.com/400x400"
-                        ],
-                        "id": 3,
-                        "category": {
-                          "id": 71,
-                          "name": "Cat"
-                        },
-                        "tags": [
-                          {
-                            "id": 22,
-                            "name": "Cat"
-                          }
-                        ],
-                        "status": "sold"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-run-in-apifox": "https://www.apifox.cn/web/project/2474673/apis/api-70017093-run"
-      }
-    },
-    "/pet": {
-      "post": {
-        "summary": "新建宠物信息",
-        "x-apifox-folder": "示例项目",
-        "x-apifox-status": "released",
-        "deprecated": false,
-        "description": "",
-        "tags": [
-          "示例项目"
-        ],
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/x-www-form-urlencoded": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string",
-                    "description": "宠物名",
-                    "example": "Hello Kitty"
-                  },
-                  "status": {
-                    "type": "string",
-                    "description": "宠物销售状态",
-                    "example": "sold"
-                  }
-                },
-                "required": [
-                  "name",
-                  "status"
-                ]
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "type": "integer",
-                      "minimum": 0,
-                      "maximum": 0
-                    },
-                    "data": {
-                      "$ref": "#/components/schemas/Pet"
-                    }
-                  },
-                  "required": [
-                    "code",
-                    "data"
-                  ],
-                  "x-apifox-orders": [
-                    "code",
-                    "data"
-                  ],
-                  "x-apifox-ignore-properties": []
-                },
-                "examples": {
-                  "1": {
-                    "summary": "成功示例",
-                    "value": {
-                      "code": 0,
-                      "data": {
-                        "name": "Hello Kity",
-                        "photoUrls": [
-                          "http://dummyimage.com/400x400"
-                        ],
-                        "id": 3,
-                        "category": {
-                          "id": 71,
-                          "name": "Cat"
-                        },
-                        "tags": [
-                          {
-                            "id": 22,
-                            "name": "Cat"
-                          }
-                        ],
-                        "status": "sold"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "x-run-in-apifox": "https://www.apifox.cn/web/project/2474673/apis/api-70017092-run"
-      },
-      "put": {
-        "summary": "修改宠物信息",
-        "x-apifox-folder": "示例项目",
-        "x-apifox-status": "released",
-        "deprecated": false,
-        "description": "",
-        "tags": [
-          "示例项目"
-        ],
-        "parameters": [],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {}
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "type": "integer"
-                    },
-                    "data": {
-                      "$ref": "#/components/schemas/Pet"
-                    }
-                  },
-                  "required": [
-                    "code",
-                    "data"
-                  ],
-                  "x-apifox-orders": [
-                    "code",
-                    "data"
-                  ],
-                  "x-apifox-ignore-properties": []
-                },
-                "examples": {
-                  "1": {
-                    "summary": "成功示例",
-                    "value": {
-                      "code": 0,
-                      "data": {
-                        "name": "Hello Kity",
-                        "photoUrls": [
-                          "http://dummyimage.com/400x400"
-                        ],
-                        "id": 3,
-                        "category": {
-                          "id": 71,
-                          "name": "Cat"
-                        },
-                        "tags": [
-                          {
-                            "id": 22,
-                            "name": "Cat"
-                          }
-                        ],
-                        "status": "sold"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "记录不存在",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {},
-                  "x-apifox-orders": [],
-                  "x-apifox-ignore-properties": []
-                }
-              }
-            }
-          },
-          "405": {
-            "description": "验证错误",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {},
-                  "x-apifox-orders": [],
-                  "x-apifox-ignore-properties": []
-                }
-              }
-            }
-          }
-        },
-        "x-run-in-apifox": "https://www.apifox.cn/web/project/2474673/apis/api-70017094-run"
-      }
-    },
-    "/pet/findByStatus": {
-      "get": {
-        "summary": "根据状态查找宠物列表",
-        "x-apifox-folder": "示例项目",
-        "x-apifox-status": "released",
-        "deprecated": false,
-        "description": "",
-        "tags": [
-          "示例项目"
-        ],
-        "parameters": [
-          {
-            "name": "status",
-            "in": "query",
-            "description": "Status values that need to be considered for filter",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "成功",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Pet"
-                  }
-                },
-                "examples": {
-                  "1": {
-                    "summary": "成功示例",
-                    "value": {
-                      "code": 0,
-                      "data": [
-                        {
-                          "name": "Hello Kity",
-                          "photoUrls": [
-                            "http://dummyimage.com/400x400"
-                          ],
-                          "id": 3,
-                          "category": {
-                            "id": 71,
-                            "name": "Cat"
-                          },
-                          "tags": [
-                            {
-                              "id": 22,
-                              "name": "Cat"
-                            }
-                          ],
-                          "status": "sold"
-                        },
-                        {
-                          "name": "White Dog",
-                          "photoUrls": [
-                            "http://dummyimage.com/400x400"
-                          ],
-                          "id": 3,
-                          "category": {
-                            "id": 71,
-                            "name": "Dog"
-                          },
-                          "tags": [
-                            {
-                              "id": 22,
-                              "name": "Dog"
-                            }
-                          ],
-                          "status": "sold"
-                        }
-                      ]
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "错误的 status 值",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "code": {
-                      "type": "integer"
-                    }
-                  },
-                  "required": [
-                    "code"
-                  ],
-                  "x-apifox-orders": [
-                    "code"
-                  ],
-                  "x-apifox-ignore-properties": []
-                }
-              }
-            }
-          }
-        },
-        "x-run-in-apifox": "https://www.apifox.cn/web/project/2474673/apis/api-70017095-run"
-      }
-    },
     "/": {
       "get": {
-        "summary": "获取二级cookie",
-        "x-apifox-folder": "华东南一级DM测试",
-        "x-apifox-status": "developing",
+        "summary": "西南重庆-重庆错误cookieB",
+        "x-apifox-folder": "华东南一级DM测试/华东南宁波附加服务器测试",
+        "x-apifox-status": "released",
         "deprecated": false,
         "description": "",
         "tags": [
-          "华东南一级DM测试"
+          "华东南一级DM测试/华东南宁波附加服务器测试"
         ],
         "parameters": [
           {
-            "name": "x-up-Calling-line-id",
+            "name": "imsi",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "46007447901",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "vers",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "10",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "client_vendor",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "ZTE",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "terminal_verdor",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "ZTE",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "provisioning_version",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "example": "5.0",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cookie",
             "in": "header",
             "description": "",
             "required": false,
-            "example": "+8612345678212",
+            "example": "SPDCCookie=eyJhbGciOiJBeXBlIjoiMSIsInNlcSI6IjEiLCJzaXRlIjoiMSJ9.5Vg2lKycSf2YMsWrx/R/b8aib7FdRt3pPYwTIPii73580d12a1fdce16fb33422;Expires=Thu, 23-Mar-23 13:08:49 GMT;=223.92.24.26:80;Path=/",
             "schema": {
               "type": "string"
             }
@@ -522,7 +116,7 @@
             }
           }
         },
-        "x-run-in-apifox": "https://www.apifox.cn/web/project/2474673/apis/api-70325141-run"
+        "x-run-in-apifox": "https://www.apifox.cn/web/project/2474673/apis/api-70497315-run"
       }
     }
   },
